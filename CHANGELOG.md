@@ -1,5 +1,68 @@
 Changelog
 =========
+## 2.8.9
+* Fixes issue where incorrect current month is shown
+
+## 2.8.8
+* Fixes issues introduced in v2.8.7 recognizing any calendar view as clickingOutside trigger
+
+## 2.8.7
+* Update react-onclickoutside dependency. That should fix most of the problems about closeOnSelect.
+
+## 2.8.6
+* Revert commits related to `closeOnSelect` that did not fix all issues they were meant to
+
+## 2.8.5
+* Fix bug where `closeOnSelect` was not closing when it was set to `true`
+* Fix bug where component would not immediately re-render when updating either `utc` or `locale` prop
+
+## 2.8.4
+* Fix bug where `closeOnSelect=true` would cause component to close on state change
+
+## 2.8.3
+* Fix `isValidDate` related bug where current month would be invalid
+* Trigger re-render of component when `viewMode` changes
+* Never append `rdtOld` class in year view
+
+## 2.8.2
+* Fix year related bug in tests where year was set to 2016
+* Add a yarnfile so yarn is now possible to use for installing dependencies
+
+## 2.8.1
+* Fix timeFormat related bug where 'A' was being picked up but not 'a', for setting 12-hour clock.
+
+## 2.8.0
+* Add typings for TypeScript 2.0. We now support TypeScript typings for versions 1.8 and 2.0.
+
+## 2.7.5
+* Bumps the version to skip buggy deployment 2.7.4
+
+## 2.7.4
+* Reverting updating `react` related dependencies. They were not the issue so they should not be set to the latest version of `react`.
+
+## 2.7.3
+* When updating `moment` to `2.16.0` something broke, hopefully by updating all `react` prefixed dependencies to `15.4.0` and changing the syntax in the dependency object a bit will resolve this issue.
+
+## 2.7.2
+* Bug fix: When setting `locale` and entering month view mode the component would sometimes freeze, depending on the locale. This has now been fixed.
+
+## 2.7.1
+* Bug fix: `onFocus` and `onBlur` were being called in a way causing state to reset. This unwanted behavior is now adjusted.
+
+## 2.7.0
+* `isValidDate` now supports months and years.
+* `utc` prop was added, by setting it to `true` input time values will be interpreted as UTC (Zulu time).
+* Bug fix: The input value now updates when `dateFormat` changes.
+* Removed the source-map file because the commit it was introduced in was causing the minified file to be bigger than the non-minified.
+
+## 2.6.2
+* Update file references in `package.json`
+
+## 2.6.1
+* Added a source-map file.
+* Fixed bug with invalid moment object.
+* Decreased npm package size by ~29.3KB.
+
 ## 2.6.0
 * Fixed hover styles for days
 * Added multiple simultaneous datetime component support.
