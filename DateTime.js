@@ -3,11 +3,13 @@
 var assign = require('object-assign'),
 	moment = require('moment'),
 	React = require('react'),
-	CalendarContainer = require('./src/CalendarContainer')
+	CalendarContainer = require('./src/CalendarContainer'),
+   PropTypes = require('prop-types'),
+   createClass = require('create-react-class')
 ;
 
-var TYPES = React.PropTypes;
-var Datetime = React.createClass({
+var TYPES = PropTypes;
+var Datetime = createClass({
 	propTypes: {
 		// value: TYPES.object | TYPES.string,
 		// defaultValue: TYPES.object | TYPES.string,

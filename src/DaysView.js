@@ -2,11 +2,12 @@
 
 var React = require('react'),
 	moment = require('moment'),
-  onClickOutside = require('react-onclickoutside')
+   onClickOutside = require('react-onclickoutside'),
+   createClass = require('create-react-class')
 ;
 
 var DOM = React.DOM;
-var DateTimePickerDays = onClickOutside( React.createClass({
+var DateTimePickerDays = onClickOutside(createClass({
 	render: function() {
 		var footer = this.renderFooter(),
 			date = this.props.viewDate,

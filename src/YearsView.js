@@ -1,11 +1,12 @@
 'use strict';
 
 var React = require('react'),
-	onClickOutside = require('react-onclickoutside')
+   onClickOutside = require('react-onclickoutside'),
+   createClass = require('create-react-class')
 ;
 
 var DOM = React.DOM;
-var DateTimePickerYears = onClickOutside( React.createClass({
+var DateTimePickerYears = onClickOutside(createClass({
 	render: function() {
 		var year = parseInt( this.props.viewDate.year() / 10, 10 ) * 10;
 
