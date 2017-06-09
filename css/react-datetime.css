@@ -1,13 +1,21 @@
 /*!
- * https://github.com/arqex/react-datetime
+ * https://github.com/YouCanBookMe/react-datetime
  */
+.collapse {
+  &.toggled {
+    transition: max-height 0.4s ease-out;
+  }
+
+  transition: max-height 0.4s ease-out;
+  overflow: hidden;
+}
 
 .rdt {
   position: relative;
 }
 .rdtPicker {
   display: none;
-  position: absolute;
+  /* position: absolute; */
   width: 250px;
   padding: 4px;
   margin-top: 1px;
