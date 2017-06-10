@@ -1,20 +1,29 @@
 /*!
  * https://github.com/YouCanBookMe/react-datetime
  */
-.collapse {
-  &.toggled {
-    transition: max-height 0.4s ease-out;
-  }
 
-  transition: max-height 0.4s ease-out;
-  overflow: hidden;
+.rdtCollapse.rdtToggle {
+  visibility: visible !important;
+  transition: visibility 0s, height 0.5s ease-out;
+  /* opacity: 1 !important; */
+}
+
+.rdtCollapse {
+  visibility: hidden;
+  /* opacity: 0; */
+  transition: visibility 0, height 0.5s ease-out;
+}
+
+.rdtCollapse table {
+   height: inherit !important;
 }
 
 .rdt {
   position: relative;
 }
 .rdtPicker {
-  display: none;
+  /* max-height: 0px; */
+  /* display: none; */
   /* position: absolute; */
   width: 250px;
   padding: 4px;
@@ -25,7 +34,7 @@
   border: 1px solid #f9f9f9;
 }
 .rdtOpen .rdtPicker {
-  display: block;
+  /* transition: visibility 0.4s, height 0.4s ease-out; */
 }
 .rdtStatic .rdtPicker {
   box-shadow: none;

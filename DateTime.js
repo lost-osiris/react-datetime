@@ -1,13 +1,15 @@
 'use strict';
 
 var assign = require('object-assign'),
+        PropTypes = require('prop-types'),
+        createClass = require('create-react-class'),
 	moment = require('moment'),
 	React = require('react'),
 	CalendarContainer = require('./src/CalendarContainer')
 ;
 
-var TYPES = React.PropTypes;
-var Datetime = React.createClass({
+var TYPES = PropTypes;
+var Datetime = createClass({
 	propTypes: {
 		// value: TYPES.object | TYPES.string,
 		// defaultValue: TYPES.object | TYPES.string,
@@ -51,6 +53,7 @@ var Datetime = React.createClass({
 
 	getInitialState: function() {
 		var state = this.getStateFromProps( this.props );
+      state.maxHeight = null;
 
 		if ( state.open === undefined )
 			state.open = !this.props.input;
@@ -375,7 +378,7 @@ var Datetime = React.createClass({
 
 	componentProps: {
 		fromProps: ['value', 'isValidDate', 'renderDay', 'renderMonth', 'renderYear', 'timeConstraints'],
-		fromState: ['viewDate', 'selectedDate', 'updateOn'],
+		fromState: ['viewDate', 'selectedDate', 'updateOn', 'open'],
 		fromThis: ['setDate', 'setTime', 'showView', 'addTime', 'subtractTime', 'updateSelectedDate', 'localMoment', 'handleClickOutside']
 	},
 
@@ -398,12 +401,35 @@ var Datetime = React.createClass({
 		return props;
 	},
 
+   setupRef(element) {
+      if (element != null) {
+         console.log(element.offsetHeight)
+         if (this.state.maxHeight == null) {
+            this.setState({maxHeight: element.offsetHeight});
+         }
+      }
+   },
+
+   getStyle(open) {
+      var style = {};
+      if (this.state.maxHeight != null) {
+         if (open) {
+            style.height = this.state.maxHeight + 'px';
+         } else {
+            style.height = '0px';
+         }
+      }
+
+      return style;
+   },
+
 	render: function() {
 		var DOM = React.DOM,
 			className = 'rdt' + (this.props.className ?
                   ( Array.isArray( this.props.className ) ?
                   ' ' + this.props.className.join( ' ' ) : ' ' + this.props.className) : ''),
-			children = []
+			children = [],
+         classNameCollapse = 'rdtCollapse'
 		;
 
 		if ( this.props.input ) {
@@ -420,12 +446,14 @@ var Datetime = React.createClass({
 			className += ' rdtStatic';
 		}
 
-		if ( this.state.open )
-			className += ' rdtOpen';
+		if ( this.state.open ) {
+         classNameCollapse += ' rdtToggle';
+			// className += ' rdtOpen';
+      }
 
 		return DOM.div({className: className}, children.concat(
 			DOM.div(
-				{ key: 'dt', className: 'rdtPicker' },
+				{ key: 'dt', className: 'rdtPicker ' + classNameCollapse, ref: (element) => this.setupRef(element), style: this.getStyle(this.state.open) },
 				React.createElement( CalendarContainer, {view: this.state.currentView, viewProps: this.getComponentProps(), onClickOutside: this.handleClickOutside })
 			)
 		));
