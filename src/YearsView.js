@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react'),
+<<<<<<< HEAD
     createClass = require('create-react-class'),
 	onClickOutside = require('react-onclickoutside')
 ;

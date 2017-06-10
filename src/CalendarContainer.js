@@ -3,7 +3,8 @@ var React = require('react'),
   DaysView = require('./DaysView'),
   MonthsView = require('./MonthsView'),
   YearsView = require('./YearsView'),
-  TimeView = require('./TimeView')
+  TimeView = require('./TimeView'),
+  createClass = require('create-react-class')
 ;
 
 var CalendarContainer = createClass({

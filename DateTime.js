@@ -5,7 +5,9 @@ var assign = require('object-assign'),
         createClass = require('create-react-class'),
 	moment = require('moment'),
 	React = require('react'),
-	CalendarContainer = require('./src/CalendarContainer')
+	CalendarContainer = require('./src/CalendarContainer'),
+   PropTypes = require('prop-types'),
+   createClass = require('create-react-class')
 ;
 
 var TYPES = PropTypes;

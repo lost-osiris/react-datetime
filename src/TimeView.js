@@ -3,7 +3,8 @@
 var React = require('react'),
     createClass = require('create-react-class'),
 	assign = require('object-assign'),
-  onClickOutside = require('react-onclickoutside')
+   onClickOutside = require('react-onclickoutside'),
+   createClass = require('create-react-class')
 ;
 
 var DOM = React.DOM;
